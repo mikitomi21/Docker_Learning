@@ -1,5 +1,5 @@
 # Dockerfile, Image, Container
-FROM pyton:3.8
+FROM python:3.8
 
 ADD main.py .
 
