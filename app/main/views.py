@@ -22,9 +22,23 @@ def home(request):
 
 def delete(request, pk):
     message = Message.objects.get(id=pk)
+
     if request.method == "POST":
         message.delete()
         return redirect('home')
 
     context = {}
     return render(request, 'main/delete.html', context)
+
+def edit(request, pk):
+    message = Message.objects.get(id=pk)
+    form = MessageForm(instance=message)
+
+    if request.method == "POST":
+        form = MessageForm(request.POST, instance=message)
+        if form.is_valid():
+            message.save()
+            return redirect('home')
+
+    context = {'form':form}
+    return render(request, 'main/edit.html', context)

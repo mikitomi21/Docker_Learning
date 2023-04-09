@@ -6,6 +6,7 @@
 <div class="message">
     <h2>{{message.description}}</h2>
     <a href="{% url 'delete' message.id %}">Delete</a>
+    <a href="{% url 'edit' message.id %}">Edit</a>
 </div>
 {% endfor %}
 

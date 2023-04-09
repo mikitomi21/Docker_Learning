@@ -12,10 +12,22 @@
 <body>
     <h1>MESSANGER</h1>
 
-    {% include 'navbar.html' %}
+    <header>
+        {% include 'header.html' %}
+    </header>
 
-    {% block content %}
+    <nav>
+        {% include 'navbar.html' %}
+    </nav>
 
-    {% endblock %}
+    <section>
+        {% block content %}
+
+        {% endblock %}
+    </section>
+
+    <footer>
+        {% include 'footer.html' %}
+    </footer>
 </body>
 </html>
