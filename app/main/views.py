@@ -1,10 +1,13 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import MessageForm
+from .models import Message
 
 # Create your views here.
 
 def home(request):
+    messages = Message.objects.all()
+
     form = MessageForm()
     if request.method == "POST":
         print(request.POST.get('description'))
@@ -13,8 +16,6 @@ def home(request):
             form.save()
             return redirect('home')
         
-    context = {'form':form}
+    context = {'messages':messages,
+               'form':form}
     return render(request, 'main/home.html', context)
-
-def about(request):
-    return HttpResponse("Halo halo")
