@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+STATICFILES_DIRS = [
+    "/Repository/Docker_Learning/app/static",
+]
+
 
 # Application definition
 
@@ -56,7 +60,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'templates'
+            BASE_DIR / 'templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {

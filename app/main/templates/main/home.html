@@ -3,7 +3,9 @@
 {% block content %}
 
 {% for message in messages%}
+<div class="message">
     <h2>{{message.description}}</h2>
+</div>
 {% endfor %}
 
 <form action="" method="POST">
