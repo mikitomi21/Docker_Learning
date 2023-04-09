@@ -1,6 +1,6 @@
 {% extends 'main.html' %}
 
-{% block content %}
+{% block section %}
 
 {% for message in messages%}
 <div class="message">
@@ -15,5 +15,20 @@
     {{form.as_p}}
     <input type="submit" value="Sent">
 </form>
+
+{% endblock %}
+
+
+{% block nav %}
+
+<div class="contact_list">
+    {% for user in users %}
+    <div class="contact_user">
+        {{user}}
+    </div>
+    {% endfor %}
+
+
+</div>
 
 {% endblock %}

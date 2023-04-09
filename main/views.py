@@ -2,11 +2,15 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import MessageForm
 from .models import Message
+from django.contrib.auth import get_user_model
 
 # Create your views here.
 
 def home(request):
     messages = Message.objects.all()
+
+    User = get_user_model()
+    users = User.objects.all()
 
     form = MessageForm()
     if request.method == "POST":
@@ -17,6 +21,7 @@ def home(request):
             return redirect('home')
         
     context = {'messages':messages,
+               'users':users,
                'form':form}
     return render(request, 'main/home.html', context)
 
