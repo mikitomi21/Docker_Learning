@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 STATICFILES_DIRS = [
-    "/Repository/Docker_Learning/app/static",
+    "/Repository/Messenger_Django/static",
 ]
 
 

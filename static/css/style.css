@@ -1,4 +1,26 @@
+body {
+    margin: 2px;
+}
+
 .message {
     background-color: pink;
     width: 20%;
+}
+
+nav {
+    width: 30%;
+    float:left;
+}
+
+section {
+    width: 70%;
+    float:left;
+}
+
+footer {
+    clear: both;
+    background-color: aquamarine;
+    height: 20px;
+    text-align: center;
+    width: 100%;
 }
