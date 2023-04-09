@@ -1,0 +1,6 @@
+<form action="" method="post">
+    {% csrf_token %}
+    <h3>Are you sure to delete message?</h3>
+    <a href="{{request.META.HTTP_REFERER}}">Go Back</a>
+    <input type="submit" value="Delete">
+</form>

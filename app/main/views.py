@@ -19,3 +19,12 @@ def home(request):
     context = {'messages':messages,
                'form':form}
     return render(request, 'main/home.html', context)
+
+def delete(request, pk):
+    message = Message.objects.get(id=pk)
+    if request.method == "POST":
+        message.delete()
+        return redirect('home')
+
+    context = {}
+    return render(request, 'main/delete.html', context)
