@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  app: 
+    build: .
+    volumes:
+      - .:/web
+    ports: 
+      - '8000:8000'
+    image: app:web
+    container_name: web_container
+    command: python manage.py runserver
