@@ -18,13 +18,12 @@
 
 {% endblock %}
 
-
 {% block nav %}
 
 <div class="contact_list">
     {% for user in users %}
     <div class="contact_user">
-        {{user}}
+        <a href="{% url 'profile:profile' user.id %}">{{user}}</a>
     </div>
     {% endfor %}
 

@@ -1,0 +1,15 @@
+
+{% extends 'main.html' %}
+{% block nav %}
+
+<div class="contact_list">
+    {% for user in users %}
+    <div class="contact_user">
+        <a href="{% url 'profile' user.id %}">{{user}}</a>
+    </div>
+    {% endfor %}
+
+
+</div>
+
+{% endblock %}

@@ -23,7 +23,7 @@ def home(request):
     context = {'messages':messages,
                'users':users,
                'form':form}
-    return render(request, 'main/home.html', context)
+    return render(request, 'chat/home.html', context)
 
 def delete(request, pk):
     message = Message.objects.get(id=pk)
@@ -33,7 +33,7 @@ def delete(request, pk):
         return redirect('home')
 
     context = {}
-    return render(request, 'main/delete.html', context)
+    return render(request, 'chat/delete.html', context)
 
 def edit(request, pk):
     message = Message.objects.get(id=pk)
@@ -46,4 +46,4 @@ def edit(request, pk):
             return redirect('home')
 
     context = {'form':form}
-    return render(request, 'main/edit.html', context)
+    return render(request, 'chat/edit.html', context)
