@@ -3,7 +3,9 @@
 {% block section %}
 
 {% for message in messages%}
-<div class="message">
+<div class="{% if message.author == request.user %}message_author{% else %}message{% endif %}">
+    <h6>--{{message.author}}</h6>
+    <h6>--{{message.created}}</h6>
     <h2>{{message.description}}</h2>
     <a href="{% url 'chat:delete' message.id %}">Delete</a>
     <a href="{% url 'chat:edit' message.id %}">Edit</a>

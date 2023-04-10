@@ -8,7 +8,6 @@ from django.contrib.auth import get_user_model
 
 def home(request):
     messages = Message.objects.all()
-    print(messages)
 
     User = get_user_model()
     users = User.objects.all()
@@ -17,7 +16,9 @@ def home(request):
     if request.method == "POST":
         form = MessageForm(request.POST)
         if form.is_valid() and request.POST.get('description'):
-            form.save()
+            message = form.save(commit=False)
+            message.author = request.user
+            message.save()
             return redirect('chat:home')
         
     context = {'messages':messages,
