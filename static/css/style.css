@@ -7,6 +7,10 @@ body {
     width: 20%;
 }
 
+.logging {
+    text-align: right;
+}
+
 nav {
     width: 30%;
     float:left;
