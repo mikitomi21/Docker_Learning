@@ -1,7 +1,8 @@
 from django.shortcuts import render, HttpResponse
+from django.contrib.auth.models import User
 
-# Create your views here.
 
 def home(request):
-    context = {}
+    users = User.objects.all()
+    context = {'users': users}
     return render(request, 'main/home.html', context)

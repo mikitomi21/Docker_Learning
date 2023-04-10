@@ -8,6 +8,7 @@ from django.contrib.auth import get_user_model
 
 def home(request):
     messages = Message.objects.all()
+    print(messages)
 
     User = get_user_model()
     users = User.objects.all()
@@ -18,7 +19,7 @@ def home(request):
         form = MessageForm(request.POST)
         if form.is_valid() and request.POST.get('description'):
             form.save()
-            return redirect('home')
+            return redirect('chat:home')
         
     context = {'messages':messages,
                'users':users,
@@ -30,7 +31,7 @@ def delete(request, pk):
 
     if request.method == "POST":
         message.delete()
-        return redirect('home')
+        return redirect('chat:home')
 
     context = {}
     return render(request, 'chat/delete.html', context)
@@ -43,7 +44,7 @@ def edit(request, pk):
         form = MessageForm(request.POST, instance=message)
         if form.is_valid():
             message.save()
-            return redirect('home')
+            return redirect('chat:home')
 
     context = {'form':form}
     return render(request, 'chat/edit.html', context)
