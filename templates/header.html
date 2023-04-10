@@ -1,4 +1,8 @@
-<a href="{% url 'register:login' %}">Login</a>
-<a href="{% url 'register:singup' %}">Sing up</a>
-<a href="{% url 'register:logout' %}">Logout</a>
+{% if user.is_authenticated %}
+    <a href="{% url 'register:logout' %}">Logout</a>
+    <a href="{% url 'profile:profile' user.get_username %}">Profile</a>
+{% else %}
+    <a href="{% url 'register:login' %}">Login</a>
+    <a href="{% url 'register:singup' %}">Sing up</a>
+{% endif %}
 <hr>

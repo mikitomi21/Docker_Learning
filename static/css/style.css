@@ -11,6 +11,10 @@ body {
     text-align: right;
 }
 
+.contact_user{
+    margin: 2%;
+}
+
 nav {
     width: 30%;
     float:left;
