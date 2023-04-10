@@ -13,10 +13,13 @@
     <h1>MESSENGER</h1>
 
     <header>
-        <a href="{% url 'main:home' %}">Main</a>
-        <div class="logging">
+        <div id="main_head">
+            <a href="{% url 'main:home' %}">Main</a>
+        </div>
+        <div id="logging_head">
             {% include 'header.html' %}
         </div>
+        <br><hr>
     </header>
 
     <nav>

@@ -7,8 +7,16 @@ body {
     width: 20%;
 }
 
-.logging {
+#main_head {
+    text-align: left;
+    float: left;
+    width: 50%;
+}
+
+#logging_head {
     text-align: right;
+    float: left;
+    width: 50%;
 }
 
 .contact_user{
