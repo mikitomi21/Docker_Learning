@@ -15,7 +15,6 @@ def home(request):
 
     form = MessageForm()
     if request.method == "POST":
-        print(request.POST.get('description'))
         form = MessageForm(request.POST)
         if form.is_valid() and request.POST.get('description'):
             form.save()
