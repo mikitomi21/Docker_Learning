@@ -7,4 +7,8 @@
     <h2>{{user.username}}</h2>
 </div>
 
+<div>
+    <a href="{% url 'profile:edit' user.username %}">Edit profile</a>
+</div>
+
 {% endblock %}
