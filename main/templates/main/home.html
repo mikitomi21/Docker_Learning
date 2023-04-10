@@ -2,7 +2,9 @@
 
 {% block section %}
 
+{% if user.is_authenticated %}
 <a href="{% url 'chat:home' %}"><h1>MESSENGER</h1></a>
+{% endif %}
 
 {% endblock %}
 
