@@ -26,15 +26,14 @@
 {% endblock %}
 
 {% block nav %}
-
-<div class="contact_list">
-    {% for user in users %}
-    <div class="contact_user">
-        <a href="{% url 'profile:profile' user.username %}">{{user}}</a>
+<a href="{% url 'chat:new_room' user.username %}">New Conversation</a>
+<div class="rooms_list">
+    <p>List of conversations:</p>
+    {% for room in rooms%}
+    <div class="room_name">
+        <a href="{% url 'profile:profile' user.username %}">{{room.name}}</a>
     </div>
     {% endfor %}
-
-
 </div>
 
 {% endblock %}

@@ -40,14 +40,18 @@ body {
     width: 50%;
 }
 
-.contact_user{
-    margin: 2%;
-}
-
 nav {
     width: 30%;
     float:left;
 }
+
+.contact_user{
+    margin: 2%;
+}
+.room_name {
+    margin: 2%;
+}
+
 
 section {
     width: 70%;

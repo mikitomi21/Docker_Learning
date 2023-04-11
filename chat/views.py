@@ -1,13 +1,15 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .forms import MessageForm
-from .models import Message
+from .forms import MessageForm, RoomForm
+from .models import Message, Room
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 
 # Create your views here.
 
 def home(request):
     messages = Message.objects.all()
+    rooms = Room.objects.filter(members__username=request.user)
 
     User = get_user_model()
     users = User.objects.all()
@@ -23,7 +25,8 @@ def home(request):
         
     context = {'messages':messages,
                'users':users,
-               'form':form}
+               'form':form,
+               'rooms':rooms}
     return render(request, 'chat/home.html', context)
 
 def delete(request, pk):
@@ -48,3 +51,21 @@ def edit(request, pk):
 
     context = {'form':form}
     return render(request, 'chat/edit.html', context)
+
+def new_room(request, username):
+    user = User.objects.get(username=username)
+    form = RoomForm()
+    room = Room()
+
+    if request.method == "POST":
+        form = RoomForm(request.POST)
+        if form.is_valid():
+            room = form.save(commit=False)
+            room.save()
+            room.members.add(request.user)
+            return redirect('chat:home')
+            
+    
+    context = {'user':user,
+               'form':form,}
+    return render(request, 'chat/new_room.html', context)
