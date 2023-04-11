@@ -4,6 +4,7 @@ from .forms import MessageForm, RoomForm
 from .models import Message, Room
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -19,6 +20,7 @@ def home(request):
                'rooms':rooms}
     return render(request, 'chat/home.html', context)
 
+@login_required(login_url='login')
 def delete(request, pk):
     message = Message.objects.get(id=pk)
 

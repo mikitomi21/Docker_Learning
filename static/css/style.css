@@ -23,7 +23,7 @@ body {
     margin-top: 5px;
 }
 
-.messsage_sent{
+.message_sent{
     padding-top: 20px;
     clear: both;
 }
@@ -45,10 +45,7 @@ nav {
     float:left;
 }
 
-.contact_user{
-    margin: 2%;
-}
-.room_name {
+.contact_user, .room_name{
     margin: 2%;
 }
 
