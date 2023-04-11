@@ -7,8 +7,17 @@
     <h2>{{user.username}}</h2>
 </div>
 
+<div class="profile_photo">
+    <img src={{user_url}} alt="profile_photo">
+</div>
+
 <div>
     <a href="{% url 'profile:edit' user.username %}">Edit profile</a>
 </div>
+
+<br>
+<p>First name: {{user.first_name}}</p>
+<p>Last name: {{user.last_name}}</p>
+<p>Email: {{user.email}}</p>
 
 {% endblock %}

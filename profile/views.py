@@ -6,7 +6,10 @@ from .forms import EditForm
 
 def profile(request, username):
     user = User.objects.get(username=username)
-    context = {'user':user}
+    user_url = f"/static/profile/media/{user.username}.jpg"
+
+    context = {'user':user,
+               'user_url':user_url}
     return render(request, 'profile/home.html', context)
 
 def edit(request, username):
