@@ -59,12 +59,14 @@ def new_room(request, username):
 
     if request.method == "POST":
         form = RoomForm(request.POST)
+        print(form)
         if form.is_valid():
             room = form.save(commit=False)
             room.save()
+            for member in form.cleaned_data['members']:
+                room.members.add(member)
             room.members.add(request.user)
             return redirect('chat:home')
-            
     
     context = {'user':user,
                'form':form,}
