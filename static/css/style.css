@@ -2,14 +2,30 @@ body {
     margin: 0px;
 }
 
+.message_box {
+    width: 100%;
+}
+
 .message {
+    clear: both;
     background-color: pink;
     width: 20%;
+    float: left;
+    margin-top: 5px;
+
 }
 
 .message_author{
+    clear: both;
     background-color: cyan;
     width: 20%;
+    float: right;
+    margin-top: 5px;
+}
+
+.messsage_sent{
+    padding-top: 20px;
+    clear: both;
 }
 
 #main_head {
