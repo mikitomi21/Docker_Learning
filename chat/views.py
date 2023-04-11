@@ -13,19 +13,9 @@ def home(request):
 
     User = get_user_model()
     users = User.objects.all()
-
-    form = MessageForm()
-    if request.method == "POST":
-        form = MessageForm(request.POST)
-        if form.is_valid() and request.POST.get('description'):
-            message = form.save(commit=False)
-            message.author = request.user
-            message.save()
-            return redirect('chat:home')
         
     context = {'messages':messages,
                'users':users,
-               'form':form,
                'rooms':rooms}
     return render(request, 'chat/home.html', context)
 
@@ -71,3 +61,26 @@ def new_room(request, username):
     context = {'user':user,
                'form':form,}
     return render(request, 'chat/new_room.html', context)
+
+def private_chat(request, name):
+    room = Room.objects.get(name=name)
+    message = Message.objects.filter(room=room)
+
+    form = MessageForm()
+    if request.method == "POST":
+        form = MessageForm(request.POST)
+        if form.is_valid() and request.POST.get('description'):
+            message = form.save(commit=False)
+            message.author = request.user
+            message.room = room
+            message.save()
+            return redirect('chat:private_chat', name=room.name)
+    
+    
+    rooms = Room.objects.filter(members__username=request.user)
+    messages = Message.objects.filter(room=room)
+    context = {'messages':messages,
+               'form':form,
+               'rooms':rooms}
+    print(message)
+    return render(request, 'chat/private_chat.html', context)

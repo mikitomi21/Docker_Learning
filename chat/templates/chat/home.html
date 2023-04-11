@@ -2,27 +2,6 @@
 
 {% block section %}
 
-{% for message in messages%}
-<div class="message_box">
-    <div class="{% if message.author == request.user %}message_author{% else %}message{% endif %}">
-        <h6>--{{message.author}}</h6>
-        <h6>--{{message.created}}</h6>
-        <h2>{{message.description}}</h2>
-        <a href="{% url 'chat:delete' message.id %}">Delete</a>
-        <a href="{% url 'chat:edit' message.id %}">Edit</a>
-    </div>
-</div>
-{% endfor %}
-
-<div class="messsage_sent">
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Sent">
-    </form>
-</div>
-
-
 {% endblock %}
 
 {% block nav %}
@@ -31,7 +10,7 @@
     <p>List of conversations:</p>
     {% for room in rooms%}
     <div class="room_name">
-        <a href="{% url 'profile:profile' user.username %}">{{room.name}}</a>
+        <a href="{% url 'chat:private_chat' room.name %}">{{room.name}}</a>
     </div>
     {% endfor %}
 </div>

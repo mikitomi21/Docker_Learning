@@ -6,5 +6,6 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('delete<int:pk>/', views.delete, name='delete'),
     path('edit<int:pk>/', views.edit, name='edit'),
-    path('new_room<str:username>/', views.new_room, name='new_room')
+    path('new_room<str:username>/', views.new_room, name='new_room'),
+    path('chat<str:name>/', views.private_chat, name='private_chat'),
 ]
