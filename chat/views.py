@@ -46,7 +46,7 @@ def edit(request, pk):
 
 def new_room(request, username):
     user = User.objects.get(username=username)
-    form = RoomForm()
+    form = RoomForm(request.user)
     room = Room()
 
     if request.method == "POST":
