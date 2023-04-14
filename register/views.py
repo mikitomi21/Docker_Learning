@@ -14,8 +14,6 @@ def loginUser(request):
         password = request.POST.get('password')
 
         user = authenticate(request, username=username, password=password)
-        print(username)
-        print(password)
         if user:
             login(request, user)
             return redirect('main:home')

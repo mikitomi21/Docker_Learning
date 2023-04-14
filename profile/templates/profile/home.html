@@ -11,9 +11,11 @@
     <img src={{user_url}} alt="profile_photo">
 </div>
 
+{% if user == request.user %}
 <div>
     <a href="{% url 'profile:edit' user.username %}">Edit profile</a>
 </div>
+{% endif %}
 
 <br>
 <p>First name: {{user.first_name}}</p>
