@@ -10,6 +10,8 @@ def profile(request, username):
 
     context = {'user':user,
                'user_url':user_url}
+
+    print(user.is_authenticated)
     return render(request, 'profile/home.html', context)
 
 def edit(request, username):
